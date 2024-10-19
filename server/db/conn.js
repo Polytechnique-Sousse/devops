@@ -11,7 +11,8 @@ module.exports = {
   connectToMongoDB: async function () {
     try {
       // Connect to the MongoDB server
-      await client.connect();
+      cc = await client.connect();
+      
       _db = client.db("employees");  // Connect to the "employees" database
       console.log("Successfully connected to MongoDB.");
     } catch (error) {
