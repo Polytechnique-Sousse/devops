@@ -74,9 +74,9 @@
 
 pipeline {
     environment {
-        registryCredential = 'dockerhub'
-        IMAGE_NAME_SERVER = 'naouresdoc/mern-server'
-        IMAGE_NAME_CLIENT = 'naouresdoc/mern-client'
+        registryCredential = 'dockerhub_nawres'
+        IMAGE_NAME_SERVER = 'naoureskraiem/mern-server'
+        IMAGE_NAME_CLIENT = 'naoureskraiem/mern-client'
         PUSH_SUCCESS = 'false' 
     }
     agent any
