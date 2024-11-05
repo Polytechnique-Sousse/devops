@@ -9,13 +9,13 @@ pipeline {
         IMAGE_NAME_CLIENT = 'naouresdoc/mern-client'
     }
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'git@github.com:Polytechnique-Sousse/devops.git',
-                    credentialsId: 'github-ssh'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git branch: 'main',
+        //             url: 'git@github.com:Polytechnique-Sousse/devops.git',
+        //             credentialsId: 'github-ssh'
+        //     }
+        // }
         stage('Build Server Image') {
             steps {
                 dir('server') {
