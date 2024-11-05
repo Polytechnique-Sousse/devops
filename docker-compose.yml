@@ -1,0 +1,43 @@
+version: '3'
+services:
+  # Définition du service MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    networks:
+      - mern-network
+    ports:
+      - "27017:27017"  # Exposer le port MongoDB par défaut
+
+  # Définition du service serveur (Express)
+  server:
+    build:
+      context: ./server
+    container_name: server
+    ports:
+      - "5000:5000"  # Exposer le port 5000 pour l'API Express
+    networks:
+      - mern-network
+    depends_on:
+      - mongodb  # Attendre que MongoDB soit prêt
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/employees  # URL de connexion à MongoDB
+
+  # Définition du service client (React)
+  client:
+    build:
+      context: ./client
+    container_name: client
+    ports:
+      - "3000:3000"  # Exposer le port 3000 pour l'application React
+    networks:
+      - mern-network
+    depends_on:
+      - server  # Attendre que le serveur soit prêt
+
+# Définir un réseau Docker personnalisé
+networks:
+  mern-network:
+    driver: bridge
+
+
